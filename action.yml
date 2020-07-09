@@ -1,0 +1,21 @@
+name: Clang Format Github Action
+author: Rafik Farhad <rafikfarhad@gmail.com>
+description: An action that check the code format is compliant with a certain configuration
+branding:
+  icon: feather
+  color: gray-dark
+inputs:
+  style:
+    description: The style to use by clang-format. 
+    required: false
+    default: 'LLVM'
+  sources:
+    description: |
+      The source file location. It can be a single file,
+      regex of a folder or multiple selecteot seprated 
+      by comma (`,`)
+    required: false
+    default: "**/*"
+runs:
+  using: docker
+  image: Dockerfile
