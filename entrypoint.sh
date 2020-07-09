@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash -
+#!/bin/bash -
 #title          :entrypoint.sh
 #description    :This script runs clang format on slected file/folder and exit with status 0 if every file is formated correctly.
 #author         :RafikFarhad<rafikfarhad@gmail.com>
