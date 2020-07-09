@@ -75,7 +75,4 @@ function main() {
 }
 
 cd "$GITHUB_WORKSPACE" || exit 2
-log "$GITHUB_WORKSPACE"
-echo $(ls)
-echo $(pwd)
 main

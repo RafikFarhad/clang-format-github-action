@@ -1,10 +1,6 @@
-FROM unibeautify/clang-format:latest
+FROM silkeh/clang:10
 
 LABEL maintainer="RafikFarhad<rafikfarhad@gmail.com>"
-
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache bash
 
 COPY entrypoint.sh /entrypoint.sh
 
