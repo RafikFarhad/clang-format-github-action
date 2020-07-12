@@ -68,10 +68,10 @@ function main() {
         log "Some file is not formatted correctly."
         log "You might want to run: "
         for ((i = 0; i < ${#PROBLEMETIC_FILES[@]}; i++)); do
-            echo "clang-format -style=file -i "${PROBLEMETIC_FILES[$i]}""
-            if [ "$i" -ne 0 ]; then
-                echo " && "
+            if [ $i -ne 0 ]; then
+                echo -n " && "
             fi
+            echo "clang-format -style=file -i "${PROBLEMETIC_FILES[$i]}" \\"
         done
         exit 1
     fi
