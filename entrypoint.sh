@@ -66,9 +66,9 @@ function main() {
         exit 0
     else
         log "Some file is not formatted correctly."
-        log "You may run: "
+        log "You might want to run: "
         for ((i = 0; i < ${#PROBLEMETIC_FILES[@]}; i++)); do
-            log "\t clang-format -style=file -i "${PROBLEMETIC_FILES[$i]}""
+            echo "\t clang-format -style=file -i "${PROBLEMETIC_FILES[$i]}""
         done
         exit 1
     fi
