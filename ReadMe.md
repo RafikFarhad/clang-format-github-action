@@ -18,16 +18,34 @@ Default: `"**/*"`.  That means all files in this repository.
 
 Example: If your repository contains many files other than C file, you can try with specific extension like:
 
-`"src/*.h,src/*.m"`
+`"src/*.h,src/*.c"`
 
 or, for all nested folder
 
-`"src/**/*.h,src/**/*.m"`
+`"src/**/*.h,src/**/*.c"`
 
 ### `style`
 The style for `clang-format`. Possible value are: `LVM, Google, Chromium, Mozilla, WebKit`. If your repository has a `.clang-format` file in the root directory then you can use `file` option here.
 
 Default: `LVM`
+
+## Sample Workflow File
+Create a file in `.github/workflows/` folder with:
+
+```
+name: Clang Format Checker
+on: [push]
+jobs:
+  clang-format-checking:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: RafikFarhad/clang-format-github-action@v1-rc2 
+        with:
+          sources: "src/**/*.h,src/**/*.c,test/**/*.c"
+```
+
+It will check for code formation violation on every `push` to GitHub.
 
 ## Version
 
