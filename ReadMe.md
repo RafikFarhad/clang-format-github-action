@@ -25,9 +25,9 @@ or, for all nested folder
 `"src/**/*.h,src/**/*.c"`
 
 ### `style`
-The style for `clang-format`. Possible value are: `LVM, Google, Chromium, Mozilla, WebKit`. If your repository has a `.clang-format` file in the root directory then you can use `file` option here.
+The style for `clang-format`. Possible value are: `LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit`. If your repository has a `.clang-format` file in the root directory then you can use `file` option here.
 
-Default: `LVM`
+Default: `LLVM`
 
 ## Sample Workflow File
 Create a file in `.github/workflows/` folder with:
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: RafikFarhad/clang-format-github-action@v1
+      - uses: RafikFarhad/clang-format-github-action@v1.0.1
         with:
           sources: "src/**/*.h,src/**/*.c,test/**/*.c"
 ```
@@ -54,6 +54,6 @@ Kudos to [@silkeh](github.com/silkeh) for his awesome [docker image](https://hub
 
 ## Contribution
 
-Feel free to submit PR and raise issue.
+Feel free to submit PR and/or raise issue.
 
 🌞 Thanks for using 🌞

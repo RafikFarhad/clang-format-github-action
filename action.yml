@@ -8,11 +8,11 @@ inputs:
   style:
     description: The style to use by clang-format. 
     required: false
-    default: 'LVM'
+    default: 'LLVM'
   sources:
     description: |
       Location of sources to check. It can be a single file,
-      regex of a folder or multiple selecteor seprated 
+      regex of a directory or multiple selecteor seprated 
       by comma (`,`)
     required: false
     default: "**/*"

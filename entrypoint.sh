@@ -38,7 +38,7 @@ function resolve_inputs() {
 
 function check_file() {
     local file="$1"
-    message="$(clang-format -n -Werror --ferror-limit=1 $STYLE --fallback-style=LVM "${file}")"
+    message="$(clang-format -n -Werror --ferror-limit=1 $STYLE --fallback-style=LLVM "${file}")"
     local status="$?"
     if [ $status -ne 0 ]; then
         echo "$message" >&2
