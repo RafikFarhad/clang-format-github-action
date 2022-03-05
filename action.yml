@@ -16,6 +16,11 @@ inputs:
       by comma (`,`)
     required: false
     default: "**/*"
+  excludes:
+    description: |
+      Paths to exclude separeted by comma (`,`)
+    required: false
+    default: ""
 runs:
   using: docker
   image: Dockerfile

@@ -5,22 +5,11 @@
 #date           :20200809
 #version        :1.0.0
 #usage          :./entrypoint.sh
-#notes          :Optional env values are: INPUT_STYLE,INPUT_SOURCES
+#notes          :Optional env values are: INPUT_STYLE,INPUT_SOURCES,INPUT_EXCLUDES
 #bash_version   :5.0.17(1)-release
 ###################################################
 function log() {
     echo -e "[ gh-action ] :: $1"
-}
-function split_csv() {
-    IFS=','
-    csv_data="$1"
-    local -n global_list_array="$2"
-    for i in $csv_data; do
-        if [ -f "$i" ]; then
-            global_list_array+=("$i")
-        fi
-    done
-    unset IFS
 }
 
 SOURCES=()
@@ -48,13 +37,40 @@ function check_file() {
     return 0
 }
 
+function find_cmd() {
+    IFS=','
+    paths="$1"
+    excludes="$2"
+    local -n cmd="$3"
+    
+    cmd+="find . -type f "
+    for exclude in $excludes; do
+        cmd+="! -wholename \"./$exclude\" "
+    done
+
+    cmd+="\( "
+    local is_first=1
+    for path in $paths; do
+        if [ $is_first -ne 1 ]; then
+            cmd+="-o "
+        fi
+        cmd+="-wholename \"./$path\" "
+        is_first=0
+    done
+    cmd+=" \)"
+    
+    unset IFS
+}
+
 function main() {
     log "Action started"
     resolve_inputs
-    log "Sources to check: $INPUT_SOURCES\n"
-    split_csv "$INPUT_SOURCES" SOURCES
+    log "Sources to check: $INPUT_SOURCES"
+    log "Excluding: $INPUT_EXCLUDES\n"
+    find_cmd $INPUT_SOURCES $INPUT_EXCLUDES FIND_CMD
 
-    for file in "${SOURCES[@]}"; do
+    for file in $(eval $FIND_CMD); do
+        log "Checking file: $file"
         check_file "$file"
         if [ $? -ne 0 ]; then
             PROBLEMETIC_FILES+=("$file")
