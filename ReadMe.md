@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: RafikFarhad/clang-format-github-action@v2.0.0
+      - uses: RafikFarhad/clang-format-github-action@v2.1.0
         with:
           sources: "src/**/*.h,src/**/*.c,test/**/*.c"
 ```
