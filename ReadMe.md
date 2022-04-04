@@ -54,6 +54,7 @@ This action uses `clang-format` version 12.
 Kudos to
 - [@silkeh](github.com/silkeh) for his awesome [docker image](https://hub.docker.com/r/silkeh/clang).
 - [@LinkTed](github.com/LinkTed) for contibution on upgrading to clang 12
+- [@aadeg](github.com/aadeg) for implementing `exclude` support
 
 ### Older Clang Version
 If you want to use clang version 10, use v1.0.1 of this action.
