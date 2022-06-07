@@ -39,6 +39,7 @@ function check_file() {
 
 function find_cmd() {
     IFS=','
+    set -o noglob
     paths="$1"
     excludes="$2"
     local -n cmd="$3"
@@ -58,7 +59,8 @@ function find_cmd() {
         is_first=0
     done
     cmd+=" \)"
-    
+
+    set +o noglob
     unset IFS
 }
 
