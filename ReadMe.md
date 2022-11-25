@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: RafikFarhad/clang-format-github-action@v2.1.0
+      - uses: RafikFarhad/clang-format-github-action@v3
         with:
           sources: "src/**/*.h,src/**/*.c,test/**/*.c"
 ```
@@ -51,13 +51,17 @@ It will check for code formation violation on every `push` to GitHub.
 
 This action uses `clang-format` version 12.
 
+| Clang Version | Action |
+|---------|---------------|
+| 14 | RafikFarhad/clang-format-github-action@v3 |
+| 12 | RafikFarhad/clang-format-github-action@v2.1.0 |
+| 10 | RafikFarhad/clang-format-github-action@v1.0.1 |
+
 Kudos to
 - [@silkeh](github.com/silkeh) for his awesome [docker image](https://hub.docker.com/r/silkeh/clang).
-- [@LinkTed](github.com/LinkTed) for contibution on upgrading to clang 12
-- [@aadeg](github.com/aadeg) for implementing `exclude` support
-
-### Older Clang Version
-If you want to use clang version 10, use v1.0.1 of this action.
+- [@LinkTed](github.com/LinkTed)
+- [@aadeg](github.com/aadeg)
+- [y-guyon](https://github.com/y-guyon)
 
 ## Contribution
 
