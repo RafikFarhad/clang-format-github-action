@@ -12,13 +12,13 @@ inputs:
   sources:
     description: |
       Location of sources to check. It can be a single file,
-      regex of a directory or multiple selecteor seprated 
+      regex of a directory, or multiple selectors separated 
       by comma (`,`)
     required: false
     default: "**/*"
   excludes:
     description: |
-      Paths to exclude separeted by comma (`,`)
+      Paths to exclude separated by comma (`,`)
     required: false
     default: ""
 runs:
