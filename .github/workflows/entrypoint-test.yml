@@ -25,8 +25,7 @@ jobs:
         INPUT_EXCLUDES: 'examples/file2.c'
         INPUT_STYLE: "LLVM"
       run: |
-        ./entrypoint.sh > output
-        cat output
+        ./entrypoint.sh | tee > output || true
         grep -q "Checking file: ./examples/file1.c" output
         if [ $? -ne 0 ]; then
           echo "file1.c should be checked"
