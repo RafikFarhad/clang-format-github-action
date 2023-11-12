@@ -1,0 +1,39 @@
+name: Entrypoint Tests
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-entrypoint:
+    runs-on: ubuntu-22.04
+    container:
+      image: silkeh/clang:14
+    steps:
+    - uses: actions/checkout@v2
+    - name: Basic command works
+      env:
+        INPUT_SOURCES: 'examples/*.c'
+        INPUT_EXCLUDES: 'examples/file2.c'
+        INPUT_STYLE: "LLVM"
+      run: |
+        ./entrypoint.sh | tee output || true
+        count1=$(grep -c "Checking file: ./examples/file1.c" output) || true
+        if [ $count1 -ne 1 ]; then
+          echo "file1.c should be checked"
+          exit 8
+        fi
+        count2=$(grep -c "Checking file: ./examples/file2.c" output) || true
+        if [ $count2 -ne 0 ]; then
+          echo "file2.c should not be checked"
+          exit 9
+        fi
+        echo "Basic command works"
