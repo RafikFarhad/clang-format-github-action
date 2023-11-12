@@ -1,0 +1,29 @@
+name: Entrypoint Tests
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: silkeh/clang:14
+    steps:
+    - uses: actions/checkout@v2
+    - name: Basic command works
+      env:
+        INPUT_SOURCES: 'examples/*.c'
+        INPUT_EXCLUDES: "examples/file2.c"
+        INPUT_STYLE: "LLVM"
+      run: |
+        ./entrypoint.sh | tee > output
+        echo "$output" | grep "Checking file: ./examples/file1.c"
+        echo "$output" | grep -v "Checking file: ./examples/file2.c"
+        echo "Basic command works"

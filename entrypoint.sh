@@ -68,8 +68,12 @@ function main() {
     log "Action started"
     resolve_inputs
     log "Sources to check: $INPUT_SOURCES"
-    log "Excluding: $INPUT_EXCLUDES\n"
-    find_cmd $INPUT_SOURCES $INPUT_EXCLUDES FIND_CMD
+    if [ -n "$INPUT_EXCLUDES" ]; then
+        log "Excluding: $INPUT_EXCLUDES"
+        find_cmd "$INPUT_SOURCES" "$INPUT_EXCLUDES" FIND_CMD
+    else
+        find_cmd "$INPUT_SOURCES" "" FIND_CMD
+    fi
 
     for file in $(eval $FIND_CMD); do
         log "Checking file: $file"
