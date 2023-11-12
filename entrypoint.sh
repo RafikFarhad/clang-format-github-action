@@ -44,9 +44,11 @@ function find_cmd() {
     local -n cmd="$3"
     
     cmd+="find . -type f "
-    for exclude in $excludes; do
-        cmd+="! -wholename \"./$exclude\" "
-    done
+    if [ -n "$excludes" ]; then
+        for exclude in $excludes; do
+            cmd+="! -wholename \"./$exclude\" "
+        done
+    fi
 
     cmd+="\( "
     local is_first=1

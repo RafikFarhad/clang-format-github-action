@@ -12,7 +12,7 @@ An action that check code format using `clang-format` tool. Suitable for project
 ## Inputs
 
 ### `sources`
-Sources to check by this action. It can be a single file, regex of a folder or multiple selecteor seprated by comma (`,`).
+Sources to check by this action. It can be a single file, regex of a folder or multiple selectors separated by comma (`,`).
 
 Default: `"**/*"`.  That means all files in this repository.
 
@@ -23,6 +23,11 @@ Example: If your repository contains many files other than C file, you can try w
 or, for all nested folder
 
 `"src/**/*.h,src/**/*.c"`
+
+### `excludes`
+Sources to exclude from this action. It can be a single file, regex of a folder or multiple selectors separated by comma (`,`).
+
+Default: `""`.
 
 ### `style`
 The style for `clang-format`. Possible value are: `LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit`. If your repository has a `.clang-format` file in the root directory then you can use `file` option here.
