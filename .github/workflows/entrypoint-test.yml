@@ -26,12 +26,12 @@ jobs:
         INPUT_STYLE: "LLVM"
       run: |
         ./entrypoint.sh | tee output || true
-        grep -q "Checking file: ./examples/file1.c" output; ret=$?
+        grep -q "Checking file: ./examples/file1.c" output; ret=$? || true
         if [ $ret -ne 0 ]; then
           echo "file1.c should be checked"
           exit 8
         fi
-        grep -q "Checking file: ./examples/file2.c" output; ret=$?
+        grep -q "Checking file: ./examples/file2.c" output; ret=$? || true
         if [ $ret -eq 0 ]; then
           echo "file2.c should not be checked"
           exit 9
