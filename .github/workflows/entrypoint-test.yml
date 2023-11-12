@@ -13,8 +13,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    runs-on: silkeh/clang:14
+  test-entrypoint:
+    runs-on: ubuntu:22.04
+    container:
+      image: silkeh/clang:14
     steps:
     - uses: actions/checkout@v2
     - name: Basic command works
