@@ -22,18 +22,21 @@ jobs:
     - name: Basic command works
       env:
         INPUT_SOURCES: 'examples/*.c'
-        INPUT_EXCLUDES: "examples/file2.c"
+        INPUT_EXCLUDES: 'examples/file2.c'
         INPUT_STYLE: "LLVM"
       run: |
+        env
+        pwd
+        ls
         ./entrypoint.sh | tee > output
         grep -q "Checking file: ./examples/file1.c" output
         if [ $? -ne 0 ]; then
           echo "file1.c should be checked"
-          exit 1
+          exit 8
         fi
         grep -q "Checking file: ./examples/file2.c" output
         if [ $? -eq 0 ]; then
           echo "file2.c should not be checked"
-          exit 1
+          exit 9
         fi
         echo "Basic command works"
