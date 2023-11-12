@@ -27,16 +27,16 @@ jobs:
       run: |
         ./entrypoint.sh | tee output || true
         echo "Ran entrypoint.sh -> $?"
-        grep -q "Checking file: ./examples/file1.c" output; ret=$? || true
-        echo "grep 1 -> $ret -> $?"
-        if [ $ret -ne 0 ]; then
+        count1=$(grep -c "Checking file: ./examples/file1.c" output) || true
+        echo "grep 1 -> $count1 -> $?"
+        if [ $count1 -ne 1 ]; then
           echo "file1.c should be checked"
           exit 8
         fi
         echo "file1.c is checked $?"
-        grep -q "Checking file: ./examples/file2.c" output; ret=$? || true
-        echo "grep 2 -> $ret -> $?"
-        if [ $ret -eq 0 ]; then
+        count2=$(grep -c "Checking file: ./examples/file2.c" output) || true
+        echo "grep 2 -> $count2 -> $?"
+        if [ $count2 -ne 0 ]; then
           echo "file2.c should not be checked"
           exit 9
         fi
