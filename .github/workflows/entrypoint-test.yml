@@ -26,6 +26,6 @@ jobs:
         INPUT_STYLE: "LLVM"
       run: |
         ./entrypoint.sh | tee > output
-        echo "$output" | grep "Checking file: ./examples/file1.c"
-        echo "$output" | grep -v "Checking file: ./examples/file2.c"
+        grep "Checking file: ./examples/file1.c" output | echo "file1.c should be checked"
+        grep "Checking file: ./examples/file2.c" output | echo "file 2 should not be checked"; exit 1
         echo "Basic command works"

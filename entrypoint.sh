@@ -93,7 +93,7 @@ function main() {
             if [ $i -ne 0 ]; then
                 echo -n " && "
             fi
-            echo "clang-format -style=file -i "${PROBLEMETIC_FILES[$i]}" \\"
+            echo "clang-format $STYLE -i "${PROBLEMETIC_FILES[$i]}" \\"
         done
         exit 1
     fi
