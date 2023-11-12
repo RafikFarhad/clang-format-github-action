@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   test-entrypoint:
-    runs-on: ubuntu:22.04
+    runs-on: ubuntu-22.04
     container:
       image: silkeh/clang:14
     steps:
