@@ -1,4 +1,4 @@
-FROM silkeh/clang:14
+FROM silkeh/clang:16
 
 LABEL maintainer="RafikFarhad<rafikfarhad@gmail.com>"
 
