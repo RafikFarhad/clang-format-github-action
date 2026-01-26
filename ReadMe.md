@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: RafikFarhad/clang-format-github-action@v3
+      - uses: RafikFarhad/clang-format-github-action@v5
         with:
           sources: "src/**/*.h,src/**/*.c,test/**/*.c"
 ```
@@ -54,10 +54,12 @@ It will check for code formation violation on every `push` to GitHub.
 
 ## Version
 
-This action uses `clang-format` version 12.
+This action uses `clang-format` version 19.
 
 | Clang Version | Action |
 |---------|---------------|
+| 19 | RafikFarhad/clang-format-github-action@v5 |
+| 16 | RafikFarhad/clang-format-github-action@v4 |
 | 14 | RafikFarhad/clang-format-github-action@v3 |
 | 12 | RafikFarhad/clang-format-github-action@v2.1.0 |
 | 10 | RafikFarhad/clang-format-github-action@v1.0.1 |
