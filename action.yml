@@ -21,6 +21,9 @@ inputs:
       Paths to exclude separated by comma (`,`)
     required: false
     default: ""
+outputs:
+  clang-format-version:
+    description: The version of clang-format used by this action
 runs:
   using: docker
   image: Dockerfile
