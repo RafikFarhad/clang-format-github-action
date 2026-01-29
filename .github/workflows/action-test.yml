@@ -1,0 +1,33 @@
+name: Action Tests
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - name: Run clang-format action
+      id: clang-format
+      uses: ./
+      with:
+        sources: 'examples/**'
+        excludes: 'examples/file2.c'
+        style: 'LLVM'
+    - name: Verify version output
+      run: |
+        echo "clang-format version: ${{ steps.clang-format.outputs.clang-format-version }}"
+        if [ -z "${{ steps.clang-format.outputs.clang-format-version }}" ]; then
+          echo "Version output should not be empty"
+          exit 1
+        fi
