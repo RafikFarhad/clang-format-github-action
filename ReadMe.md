@@ -75,6 +75,7 @@ Use older versions for specific `clang-format` versions.
 | Clang Version | Action |
 |---------|---------------|
 | 21 | RafikFarhad/clang-format-github-action@v6 |
+| 20 | RafikFarhad/clang-format-github-action@v5.1 |
 | 19 | RafikFarhad/clang-format-github-action@v5 |
 | 18 | RafikFarhad/clang-format-github-action@v4.1 |
 | 16 | RafikFarhad/clang-format-github-action@v4 |

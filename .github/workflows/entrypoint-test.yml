@@ -16,7 +16,7 @@ jobs:
   test-entrypoint:
     runs-on: ubuntu-latest
     container:
-      image: silkeh/clang:18
+      image: silkeh/clang:20
     steps:
     - uses: actions/checkout@v5
     - name: Basic command works
