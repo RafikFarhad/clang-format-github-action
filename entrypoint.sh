@@ -66,6 +66,9 @@ function find_cmd() {
 
 function main() {
     log "Action started"
+    CLANG_FORMAT_VERSION=$(clang-format --version | head -n 1)
+    log "clang-format version: $CLANG_FORMAT_VERSION"
+    echo "clang-format-version=$CLANG_FORMAT_VERSION" >> "$GITHUB_OUTPUT"
     resolve_inputs
     log "Sources to check: $INPUT_SOURCES"
     if [ -n "$INPUT_EXCLUDES" ]; then

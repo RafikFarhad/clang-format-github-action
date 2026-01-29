@@ -34,6 +34,21 @@ The style for `clang-format`. Possible values are: `LLVM, GNU, Google, Chromium,
 
 Default: `LLVM`
 
+## Outputs
+
+### `clang-format-version`
+The version of clang-format used by this action. This can be useful when you need to verify which version ran or use it in subsequent workflow steps.
+
+Example usage:
+```yaml
+- uses: RafikFarhad/clang-format-github-action@v6
+  id: clang-format
+  with:
+    sources: "src/**/*.h,src/**/*.c"
+
+- run: echo "Formatted with clang-format version ${{ steps.clang-format.outputs.clang-format-version }}"
+```
+
 ## Sample Workflow File
 Create a file in `.github/workflows/` folder with:
 
@@ -61,6 +76,7 @@ Use older versions for specific `clang-format` versions.
 |---------|---------------|
 | 21 | RafikFarhad/clang-format-github-action@v6 |
 | 19 | RafikFarhad/clang-format-github-action@v5 |
+| 18 | RafikFarhad/clang-format-github-action@v4.1 |
 | 16 | RafikFarhad/clang-format-github-action@v4 |
 | 14 | RafikFarhad/clang-format-github-action@v3 |
 | 12 | RafikFarhad/clang-format-github-action@v2.1.0 |
