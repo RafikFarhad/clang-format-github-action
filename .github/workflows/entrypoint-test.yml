@@ -16,7 +16,7 @@ jobs:
   test-entrypoint:
     runs-on: ubuntu-latest
     container:
-      image: silkeh/clang:21
+      image: silkeh/clang:18
     steps:
     - uses: actions/checkout@v5
     - name: Basic command works
@@ -35,5 +35,9 @@ jobs:
         if [ $count2 -ne 0 ]; then
           echo "file2.c should not be checked"
           exit 9
+        fi
+        if ! grep -q "clang-format version:" output; then
+          echo "Version should be displayed in output"
+          exit 10
         fi
         echo "Basic command works"
